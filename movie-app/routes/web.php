@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GenresController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\RivewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,12 +22,10 @@ Route::get('/', function () {
 
 Route::get('/movies',[MovieController::class, 'index'] );   
 
-Route::get('/gendre', function () {
-    return view('gendre/index');
-});
-Route::get('/rivew', function () {
-    return view('rivew/index');
-});
+Route::get('/gendre',[GenresController::class, 'index'] );
+
+Route::get('/rivew',[RivewController::class, 'index']);
+
 Route::get('/user', function () {
     return view('user/index');
 });

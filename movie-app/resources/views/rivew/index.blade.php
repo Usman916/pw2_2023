@@ -42,67 +42,23 @@
                 </tr>
             </tfoot>
             <tbody>
+                @foreach ($rivew as $rivew)
                 <tr>
-                    <td>1</td>
-                    <td>JonWick</td>
-                    <td>JhonSnap</td>
-                    <td>9.7</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque blanditiis rem dignissimos, deserunt necessitatibus veritatis architecto asperiores incidunt nulla laboriosam velit delectus ratione quis molestias eos, quibusdam dolorum ducimus ipsa?</td>
-                    <td>2023-04-25</td>
+                    <td>{{ $rivew['no'] }}</td>
+                    <td>{{ $rivew['film'] }}</td>
+                    <td>{{ $rivew['user'] }}</td>
+                    <td>{{ $rivew['rating'] }}</td>
+                    <td>{{ $rivew['rivew'] }}</td>
+                    <td>{{ $rivew['tanggal'] }}</td>
+                    
                     
                     <td>
                         <a href="" class="btn btn-sm btn-warning"> Edit</a>
                         <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')"> Delete</a>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>JonWick</td>
-                    <td>JhonSnap</td>
-                    <td>9.7</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque blanditiis rem dignissimos, deserunt necessitatibus veritatis architecto asperiores incidunt nulla laboriosam velit delectus ratione quis molestias eos, quibusdam dolorum ducimus ipsa?</td>
-                    <td>2023-04-25</td>
-                    <td>
-                        <a href="" class="btn btn-sm btn-warning"> Edit</a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')"> Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>JonWick</td>
-                    <td>JhonSnap</td>
-                    <td>9.7</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque blanditiis rem dignissimos, deserunt necessitatibus veritatis architecto asperiores incidunt nulla laboriosam velit delectus ratione quis molestias eos, quibusdam dolorum ducimus ipsa?</td>
-                    <td>2023-04-25</td>
-                    <td>
-                        <a href="" class="btn btn-sm btn-warning"> Edit</a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')"> Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>JonWick</td>
-                    <td>JhonSnap</td>
-                    <td>9.7</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque blanditiis rem dignissimos, deserunt necessitatibus veritatis architecto asperiores incidunt nulla laboriosam velit delectus ratione quis molestias eos, quibusdam dolorum ducimus ipsa?</td>
-                    <td>2023-04-25</td>
-                    <td>
-                        <a href="" class="btn btn-sm btn-warning"> Edit</a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')"> Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>The Fast</td>
-                    <td>Statham</td>
-                    <td>9.6</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque blanditiis rem dignissimos, deserunt necessitatibus veritatis architecto asperiores incidunt nulla laboriosam velit delectus ratione quis molestias eos, quibusdam dolorum ducimus ipsa?</td>
-                    <td>2023-04-25</td>
-                    <td>
-                        <a href="" class="btn btn-sm btn-warning"> Edit</a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')"> Delete</a>
-                    </td>
-                </tr>
+                @endforeach
+
             </tbody>
         </table>
     </div>
