@@ -28,5 +28,8 @@ Route::get('/rivew',[RivewController::class, 'index']);
 
 Route::get('/user', function () {
     return view('user/index');
-});
+}); 
 
+Route::get('/movies/create', [MovieController::class, 'create']);
+
+Route::post('/movies', [MovieController::class, 'store']);
