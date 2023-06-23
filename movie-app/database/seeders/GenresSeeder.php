@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Genres;
+use App\Models\Genre;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,19 +13,24 @@ class GenresSeeder extends Seeder
      */
     public function run(): void
     {
-        Genres::create([
-            'nama'=> 'Action',
-            'deskripsi'=> 'Action-packed-movies',
+        Genre::create([
+            'nama' => 'Action',
+            'deskripsi' => 'Action-packed movies',
         ]);
 
-        Genres::create([
-            'nama'=> 'Comedy',
-            'deskripsi'=> 'Funny and humorous mouvies',
+        Genre::create([
+            'nama' => 'Comedy',
+            'deskripsi' => 'Funny and humorus',
         ]);
 
-        Genres::create([
-            'nama'=> 'Drama',
-            'deskripsi'=> 'so sad movies',
+        Genre::create([
+            'nama' => 'Drama',
+            'deskripsi' => 'Romance',
+        ]);
+
+        Genre::create([
+            'nama' => 'Horor',
+            'deskripsi' => 'Romance',
         ]);
     }
 }

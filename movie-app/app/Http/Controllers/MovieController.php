@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use App\Http\Controllers\Controller;
-use App\Models\Genres;
+use App\Models\Genre;
 use Illuminate\Http\Request;
-    
+use Illuminate\Support\Facades\Storage;
 
 class MovieController extends Controller
 {
@@ -15,9 +15,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
+    $movies = Movie::all();
 
-        return view('movies.index', compact('movies'));
+    return view('movies.index', compact('movies'));
     }
 
     /**
@@ -25,7 +25,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        $genres = Genres::all();
+    $genres = Genre::all();
         return view('movies.create', compact('genres'));
     }
 
@@ -41,13 +41,18 @@ class MovieController extends Controller
             'negara' => 'required',
             'tahun' => 'required|integer',
             'rating' => 'required|numeric',
-            
         ]);
 
-        Movie::create($validatedData);
+    // Upload the image
+    if ($request->hasFile('poster')) {
+        $imageName = time() . '.' . $request->file('poster')->getClientOriginalExtension();
+        $request->file('poster')->storeAs('assets/img', $imageName, 'public');
+        $validatedData['poster'] = $imageName;
+    }
 
+
+        Movie::create($validatedData);
         return redirect('/movies')->with('success', 'Movie added successfully!');
-            
     }
 
     /**
@@ -63,7 +68,8 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        $genres = Genre::all();
+        return view('movies.edit', compact('movie','genres'));
     }
 
     /**
@@ -71,7 +77,29 @@ class MovieController extends Controller
      */
     public function update(Request $request, Movie $movie)
     {
-        //
+        $validatedData = $request->validate([
+            'judul' => 'required',
+            'poster' => 'required',
+            'genre_id' => 'required',
+            'negara' => 'required',
+            'tahun' => 'required|integer',
+            'rating' => 'required|numeric',
+        ]);
+
+        // Check if a new image is uploaded
+    if ($request->hasFile('poster')) {
+        // Delete the old image
+        Storage::disk('public')->delete('assets/img/' . $movie->poster);
+
+        // Upload the new image
+        $imageName = time() . '.' . $request->file('poster')->getClientOriginalExtension();
+        $request->file('poster')->storeAs('assets/img', $imageName, 'public');
+        $validatedData['poster'] = $imageName;
+    }
+    
+        $movie->update($validatedData);
+    
+        return redirect('/movies')->with('success', 'Movie updated successfully!');
     }
 
     /**
@@ -79,6 +107,7 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+        return redirect('/movies')->with('success', 'Movie deleted successfully!');
     }
 }
